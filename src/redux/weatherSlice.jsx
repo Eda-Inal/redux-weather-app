@@ -1,15 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice} from '@reduxjs/toolkit';
+import axios from 'axios';
 
-export const weatherSlice = createSlice({
-    name : 'weather',
-    initialState : {
-       
-    },
-    reducers : {
 
-    }
 
-})
 
-// export const {reducer function} = weatherSlice.actions
+
+const weatherSlice = createSlice({
+  name: 'weather',
+  initialState: {
+   
+  },
+  reducers: {
+  
+  },
+
+});
+
+// export const { setLocation } = weatherSlice.actions;
 export default weatherSlice.reducer;
