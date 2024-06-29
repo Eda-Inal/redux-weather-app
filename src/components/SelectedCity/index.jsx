@@ -26,7 +26,7 @@ function SelectedCity() {
         ))}
   
    </select>
-   <div className="text-5xl text-red-500">{cityname}</div>
+   {/* <div className="text-5xl text-red-500">{cityname}</div> */}
  
       </div>
     )
