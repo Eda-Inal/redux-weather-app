@@ -1,5 +1,4 @@
 import { createSlice} from '@reduxjs/toolkit';
-import axios from 'axios';
 
 
 
@@ -8,13 +7,16 @@ import axios from 'axios';
 const weatherSlice = createSlice({
   name: 'weather',
   initialState: {
-   
+   cityname:"İzmir",
+
   },
   reducers: {
-  
+  updateCity : (state,action) => {
+state.cityname = action.payload
+  }
   },
 
 });
 
-// export const { setLocation } = weatherSlice.actions;
+ export const { updateCity} = weatherSlice.actions;
 export default weatherSlice.reducer;
