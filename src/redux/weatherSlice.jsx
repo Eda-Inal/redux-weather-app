@@ -1,9 +1,19 @@
-import { createSlice} from '@reduxjs/toolkit';
+import { createSlice,createAsyncThunk} from '@reduxjs/toolkit';
 import cities from "../cities/cities.json"
 
 
 
-
+const API_KEY = 'ab8546906d9631afc09326b55a9b5d32';
+export const fetchWeatherData = createAsyncThunk(
+  'weather/fetchWeatherData',
+  async ({ latitude, longitude }) => {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+    );
+    const data = await response.json();
+    return data;
+  }
+);
 
 const weatherSlice = createSlice({
   name: 'weather',
@@ -11,7 +21,10 @@ const weatherSlice = createSlice({
     id : 35,
    cityname:"İzmir",
    latitude : "38.4189",
-   longitude :"27.1287"
+   longitude :"27.1287",
+   weatherData: null,
+   status: 'idle',
+   error: null,
 
 
   },
@@ -26,6 +39,20 @@ state.longitude =data.longitude
 console.log(data.name,data.latitude);
   },
 
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchWeatherData.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchWeatherData.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.weatherData = action.payload;
+      })
+      .addCase(fetchWeatherData.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
   },
 
 });

@@ -1,4 +1,5 @@
 import cities from "../../cities/cities.json"
+import { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { updateCity} from "../../redux/weatherSlice";
 
@@ -7,6 +8,7 @@ function SelectedCity() {
   const {cityname,id} = useSelector((state) => state.weather);
   console.log(cityname);
   console.log(id);
+ 
 
   const handleUpdateCity = (cityname) => {
     dispatch(updateCity(cityname));
@@ -24,7 +26,8 @@ function SelectedCity() {
         ))}
   
    </select>
-   <div className="text-5xl text-red-500">{cityname} {id}</div>
+   <div className="text-5xl text-red-500">{cityname}</div>
+ 
       </div>
     )
   }
