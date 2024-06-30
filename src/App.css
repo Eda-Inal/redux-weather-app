@@ -2,6 +2,7 @@
   text-align: center;
 }
 body{
-  background-color: rgb(46, 72, 160);
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgb(39, 39, 85) 0%, rgba(9,9,121,1) 48%, rgb(11, 4, 62) 100%);
 color: white;
 }

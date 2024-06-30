@@ -50,22 +50,33 @@ function Weather() {
 
   const today = new Date().toLocaleDateString();
   const currentWeather = weatherData ? weatherData.list.find(item => new Date(item.dt * 1000).toLocaleDateString() === today) : null;
+
+  let todayMinTemp = Infinity;
+  let todayMaxTemp = -Infinity;
+
   const dailyData = {};
 
   if (weatherData) {
     weatherData.list.forEach(item => {
       const date = formatDate(item.dt);
+      const temp = item.main.temp;
+
+      if (new Date(item.dt * 1000).toLocaleDateString() === today) {
+        todayMinTemp = Math.min(todayMinTemp, temp);
+        todayMaxTemp = Math.max(todayMaxTemp, temp);
+      }
+
       if (!dailyData[date]) {
         dailyData[date] = { 
-          min: item.main.temp, 
-          max: item.main.temp, 
+          min: temp, 
+          max: temp, 
           wind: item.wind.speed,
           humidity: item.main.humidity,
           icon: item.weather[0].icon 
         };
       } else {
-        dailyData[date].min = Math.min(dailyData[date].min, item.main.temp);
-        dailyData[date].max = Math.max(dailyData[date].max, item.main.temp);
+        dailyData[date].min = Math.min(dailyData[date].min, temp);
+        dailyData[date].max = Math.max(dailyData[date].max, temp);
         dailyData[date].wind = item.wind.speed;
         dailyData[date].humidity = item.main.humidity;
         dailyData[date].icon = item.weather[0].icon;
@@ -95,28 +106,33 @@ function Weather() {
                       <img src={getLocalWeatherIcon(currentWeather.weather[0].icon)} alt="weather icon" width="100" height="100" />
                       <div className="text-4xl ml-4">{currentWeather.main.temp.toFixed(0)}°C</div>
                     </div>
-                   
-                    
-                   
                   </div>
                 )}
-                <div>.</div>
               </div>
               <div className="text-lg">
                 {currentWeather && (
                   <>
                     <div className="grid grid-cols-2 mt-10 mb-5 items-center">
-                      <div>{currentWeather.main.temp_max.toFixed(0)}°C</div>
+                      <div>
+                      <span className="text-sm font-thin text-slate-200">high:    </span>
+                        {todayMaxTemp.toFixed(0)}°C
+                      </div>
                       <div className="flex items-center">
                         <img src={windIcon} alt="wind icon" className="w-6 h-6 mr-2" />
                         <span>{currentWeather.wind.speed} m/s</span>
+                        <div className="text-sm ml-1 font-thin text-slate-200 "> wind</div>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 mt-5 items-center">
-                      <div>{currentWeather.main.temp_min.toFixed(0)}°C</div>
+                      <div>
+                      <span className="text-sm font-thin  text-slate-200">low:   </span>
+                        {todayMinTemp.toFixed(0)}°C
+                        
+                      </div>
                       <div className="flex items-center">
                         <img src={humidityIcon} alt="humidity icon" className="w-6 h-6 mr-2" />
                         <span>{currentWeather.main.humidity}%</span>
+                        <div className="text-sm ml-1 font-thin text-slate-200">hum</div>
                       </div>
                     </div>
                   </>
@@ -125,18 +141,16 @@ function Weather() {
               <div></div>
             </div>
             <div className="mt-6">
-             
-              <div className="grid grid-cols-6 gap-4 mt-5 mx-auto h-64 w-4/5">
-  {dailyForecast.map((weather, index) => (
-    <div key={index} className="text-center  p-2 bg-blue-900">
-      <h3>{weather.date}</h3>
-      <img className="mx-auto" src={getLocalWeatherIcon(weather.icon)} alt="weather icon" width="70" height="70" />
-      <p>Min {weather.min.toFixed(0)}°C</p>
-      <p>Max {weather.max.toFixed(0)}°C</p>
-    </div>
-  ))}
-</div>
-
+              <div className="grid grid-cols-6 gap-4 mt-7 mx-auto h-64 w-4/5">
+                {dailyForecast.map((weather, index) => (
+                  <div key={index} className="text-center rounded-2xl p-2 mt-12 bg-blue-600">
+                    <h3>{weather.date}</h3>
+                    <img className="mx-auto" src={getLocalWeatherIcon(weather.icon)} alt="weather icon" width="70" height="70" />
+                    <p>Min {weather.min.toFixed(0)}°C</p>
+                    <p>Max {weather.max.toFixed(0)}°C</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

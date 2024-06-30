@@ -17,7 +17,7 @@ function SelectedCity() {
 
     return (
       <div>
-   <select className="m-6 w-1/4 p-2 border-2 border-blue-300 text-blue-950 " onChange={(event) => handleUpdateCity(event.target.value)}>
+   <select className="m-6 w-1/4 p-2 rounded-2xl  bg-blue-200 font-medium  text-blue-950  pl-3 " onChange={(event) => handleUpdateCity(event.target.value)}>
     <option value="">{cityname}  </option>
         {cities.map((city) =>(
  <option key={city.id} value={city.name}    >
