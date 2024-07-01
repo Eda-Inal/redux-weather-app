@@ -154,7 +154,7 @@ function Weather() {
       <p>Max {weather.max.toFixed(0)}°C</p>
     </div>
   ))}
-  <div className="h-8 md:h-8"></div> 
+  <div className="h-12 md:h-8"></div> 
 
 
 </div>
