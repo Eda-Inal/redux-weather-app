@@ -145,9 +145,9 @@ function Weather() {
               
             </div>
             <div className="mt-32 md:mt-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4  mx-auto h-48 w-4/5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4  mx-auto h-48 md:w-4/5 sm:w-full">
   {dailyForecast.map((weather, index) => (
-    <div key={index} className="text-center rounded-2xl p-2 mt-2  bg-blue-600">
+    <div key={index} className="text-center rounded-2xl p-2 mt-2  bg-gradient-to-r from-cyan-300 to-blue-600">
       <h3>{weather.date}</h3>
       <img className="mx-auto" src={getLocalWeatherIcon(weather.icon)} alt="weather icon" width="70" height="70" />
       <p>Min {weather.min.toFixed(0)}°C</p>
