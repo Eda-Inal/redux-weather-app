@@ -9,6 +9,9 @@ function All() {
       <SelectedCity/>
       <Weather/>
       <Footer/>
+
+
+     
     </div>
   )
 }

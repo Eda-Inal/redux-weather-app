@@ -98,7 +98,7 @@ function Weather() {
       {status === 'loading' && <p>Loading...</p>}
       {status === 'succeeded' && weatherData && (
         <div >
-          <div className=" w-3/4 h-[550px] rounded mx-auto">
+          <div className=" w-3/4 rounded mx-auto">
             <div className=" w-4/5 h-1/3 mx-auto inline-grid sm:grid-cols-1 md:grid-cols-2">
             <div className="md:border-r-2 ">
                 <div className="text-xl text-left ">{cityname}, TR
@@ -144,8 +144,8 @@ function Weather() {
               </div>
               
             </div>
-            <div className="mt-32 md:mt-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4  mx-auto h-48 md:w-4/5 sm:w-full">
+            <div className="md:mt-12 ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4  mx-auto h-48 md:w-4/5 sm:w-full ">
   {dailyForecast.map((weather, index) => (
     <div key={index} className="text-center rounded-2xl p-2 mt-2  bg-gradient-to-r from-cyan-300 to-blue-600">
       <h3>{weather.date}</h3>
@@ -154,6 +154,9 @@ function Weather() {
       <p>Max {weather.max.toFixed(0)}°C</p>
     </div>
   ))}
+  <div className="h-8 md:h-8"></div> 
+
+
 </div>
 
             </div>
@@ -161,6 +164,7 @@ function Weather() {
         </div>
       )}
       {status === 'failed' && <p>Error fetching weather data</p>}
+      
     </div>
   );
 }
