@@ -1,5 +1,4 @@
 import cities from "../../cities/cities.json"
-import { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { updateCity} from "../../redux/weatherSlice";
 
