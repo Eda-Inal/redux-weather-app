@@ -4,10 +4,14 @@ import { fetchWeatherData } from "../../redux/weatherSlice";
 import windIcon from "../../assets/wind.webp"; 
 import humidityIcon from "../../assets/humidty.png";
 import cloudy from "../../assets/cloudy.webp";
+import onecloudy from "../../assets/oneCloudy.png"
 import partlyCloudy from "../../assets/PartlyCloudy.png";
 import rainy from "../../assets/rainy.png";
 import sunny from "../../assets/sun.webp";
-
+import cloudandrainy from "../../assets/cloudandrainy.png"
+import ligthning from "../../assets/lightning.webp";
+import snow from "../../assets/snow.png";
+import mist from "../../assets/mist.png"
 
 const getLocalWeatherIcon = (iconCode) => {
   const iconMapping = {
@@ -15,20 +19,20 @@ const getLocalWeatherIcon = (iconCode) => {
     "01n": sunny,
     "02d": partlyCloudy,
     "02n": partlyCloudy,
-    "03d": cloudy,
-    "03n": cloudy,
+    "03d": onecloudy,
+    "03n": onecloudy,
     "04d": cloudy,
     "04n": cloudy,
     "09d": rainy,
     "09n": rainy,
-    "10d": rainy,
-    "10n": rainy,
-    "11d": rainy,
-    "11n": rainy,
-    "13d": rainy,
-    "13n": rainy,
-    "50d": cloudy,
-    "50n": cloudy
+    "10d": cloudandrainy,
+    "10n": cloudandrainy,
+    "11d": ligthning,
+    "11n": ligthning,
+    "13d": snow,
+    "13n": snow,
+    "50d": mist,
+    "50n": mist
   };
   return iconMapping[iconCode] || cloudy;
 };
