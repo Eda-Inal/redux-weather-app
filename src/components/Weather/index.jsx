@@ -116,12 +116,12 @@ function Weather() {
               <div className="text-lg">
                 {currentWeather && (
                   <>
-                    <div className="grid grid-cols-2 mt-10 mb-5 items-center">
+                    <div className="grid grid-cols-2 mt-10  items-center">
                       <div>
                       <span className="text-sm font-thin text-slate-200">high:    </span>
                         {todayMaxTemp.toFixed(0)}°C
                       </div>
-                      <div className="flex items-center">
+                      <div className="flex  items-center">
                         <img src={windIcon} alt="wind icon" className="w-6 h-6 mr-2" />
                         <span>{currentWeather.wind.speed} m/s</span>
                         <div className="text-sm ml-1 font-thin text-slate-200 "> wind</div>
@@ -144,10 +144,10 @@ function Weather() {
               </div>
               
             </div>
-            <div className="mt-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-7 mx-auto h-64 w-4/5">
+            <div className="mt-32 md:mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4  mx-auto h-48 w-4/5">
   {dailyForecast.map((weather, index) => (
-    <div key={index} className="text-center rounded-2xl p-2 mt-12 bg-blue-600">
+    <div key={index} className="text-center rounded-2xl p-2 mt-2  bg-blue-600">
       <h3>{weather.date}</h3>
       <img className="mx-auto" src={getLocalWeatherIcon(weather.icon)} alt="weather icon" width="70" height="70" />
       <p>Min {weather.min.toFixed(0)}°C</p>
