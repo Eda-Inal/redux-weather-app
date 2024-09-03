@@ -3,7 +3,12 @@ import cities from "../cities/cities.json"
 
 
 
-const API_KEY = 'ab8546906d9631afc09326b55a9b5d32';
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+console.log('API Key:', API_KEY);
+
+
+
 export const fetchWeatherData = createAsyncThunk(
   'weather/fetchWeatherData',
   async ({ latitude, longitude }) => {
