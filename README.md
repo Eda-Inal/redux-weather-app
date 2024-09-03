@@ -1,5 +1,5 @@
 
-### Demo: [Live Link](https://redduxweatherapp.netlify.app/)
+### Demo: [Live Link](https://redux-weather-app-9mwd.vercel.app/)
 
 ### TOOLS:
 #### - React
