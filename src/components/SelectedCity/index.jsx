@@ -4,7 +4,7 @@ import { updateCity} from "../../redux/weatherSlice";
 
 function SelectedCity() {
   const dispatch = useDispatch();
-  const {cityname,id} = useSelector((state) => state.weather);
+  const {cityname} = useSelector((state) => state.weather);
 
  
 
